@@ -2,6 +2,7 @@ import React, { useState, useEffect  } from 'react';
 import SearchBox from '../Components/SearchBox';
 import Scroll from '../Components/Scroll';
 import CardArray from '../Components/CardList';
+import ErrorBoundry from '../Components/ErrorBoundry';
 
 const App = () => {
 
@@ -28,20 +29,21 @@ const App = () => {
     //Filtering the input from the SearchField.
     const kittyFilter = Kittens.filter(kitty =>{
             return kitty.name.toLowerCase().includes(SearchField.toLowerCase())
-        })
-    if (Kittens.length === 0) {
-        return <h1 className='tc'>loading, please wait</h1>
-    } else {
-        return (
+        });
+    return !Kittens.length ?
+            <h1 className='tc'>loading, please wait</h1>
+        : 
             <div className='tc'>
                 <h1>KittyFriends</h1>
                 <SearchBox SearchChange = {onSearchChange}/>
                 <Scroll>
-                    <CardArray robots={kittyFilter} />
+                    <ErrorBoundry>
+                        <CardArray robots={kittyFilter} />
+                    </ErrorBoundry>
                 </Scroll>
             </div>
-        );
-    }
+        
+    
 }
 
 export default App;
