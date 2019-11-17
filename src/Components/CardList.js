@@ -2,9 +2,6 @@ import React from 'react';
 import Card from './Card';
 
 const CardArray = ({ robots }) => {
-    if (true) {
-        return Error('shiiit');
-    }
     return (
         <div>
             {
