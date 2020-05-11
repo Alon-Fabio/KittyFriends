@@ -2,7 +2,10 @@ import React from 'react';
 import Card from './Card';
 
 const CardArray = ({ robots }) => {
+<<<<<<< HEAD
     
+=======
+>>>>>>> 163e4d95d1cb64c7e682b82eadd259299aa846a2
     return (
         <div>
             {
